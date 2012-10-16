@@ -33,7 +33,9 @@ html = Markdown.compile(markdown_source);
         </ul>
         <h2>Documentation</h2>
         <ul>
+            <li><a href="/index.sl/doc/comparable">Comparable</a></li>
             <li><a href="/index.sl/doc/string">String</a></li>
+        </ul>
     </nav>
     <section>
         <%!! html %>
