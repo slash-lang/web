@@ -3,10 +3,10 @@
 page = "/home";
 
 if Request.path_info != "" {
-    if %r{(^/[a-z_]+)+/?$}.match(Request.path_info) {
+    if %r{^(/[a-z_]+)+/?$}.match(Request.path_info) {
         page = Request.path_info;
     } else {
-        Response.status_code = 404;
+        Response.status = 404;
         page = "/404";
     }
 }
@@ -33,7 +33,7 @@ html = Markdown.compile(markdown_source);
         </ul>
         <h2>Documentation</h2>
         <ul>
-            <li><a href="/doc/string">String</a></li>
+            <li><a href="/index.sl/doc/string">String</a></li>
     </nav>
     <section>
         <%!! html %>
