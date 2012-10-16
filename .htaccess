@@ -1,1 +1,1 @@
-AddHandler server-status .status
+AddHandler slash .sl
