@@ -52,7 +52,7 @@ Returns the class the receiver is an instance of.
 
 Determines if the receiver is an instance of `klass`, or an instance of a subclass of `klass`.
 
-    1.is_a(Int);
+    1.is_an(Int);
       # => true
     
     1.is_a(Number);
