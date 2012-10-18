@@ -48,7 +48,7 @@ Returns the class the receiver is an instance of.
     "foo".class;
       # => String
 
-## #is_a(klass)
+## #is\_a(klass), #is_an(klass)
 
 Determines if the receiver is an instance of `klass`, or an instance of a subclass of `klass`.
 
