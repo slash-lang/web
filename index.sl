@@ -35,6 +35,7 @@ html = Markdown.compile(markdown_source);
         <ul>
             <li><a href="/index.sl/doc/comparable">Comparable</a></li>
             <li><a href="/index.sl/doc/error">Error</a></li>
+            <li><a href="/index.sl/doc/error/frame">Error::Frame</a></li>
             <li><a href="/index.sl/doc/object">Object</a></li>
             <li><a href="/index.sl/doc/string">String</a></li>
         </ul>
