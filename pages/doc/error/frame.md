@@ -29,7 +29,7 @@ Returns the line number corresponding to this `Error::Frame`. In the case of a p
 Returns a pretty printed representation of the receiver including information such as file, line and method.
 
     e.backtrace[0].to_s;
-      # => " at my_method in some_file.sl, line 12"
+      # => "  at my_method in some_file.sl, line 12"
     
     e.backtrace[1].to_s;
-      # => "at <main> in some_file.sl, line 23"
+      # => "  at <main> in some_file.sl, line 23"
