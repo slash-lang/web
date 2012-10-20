@@ -41,6 +41,8 @@ Slash combines PHP's simple execution model with the elegance of Ruby's object m
 * **Unicode friendly**
 
       print("你好世界".length); # => 4
+      
+      print("åéîøü".upper); # => ÅÉÎØÜ
 
 * **Destructuring assignment**
 
