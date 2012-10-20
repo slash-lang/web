@@ -57,6 +57,10 @@ Slash combines PHP's simple execution model with the elegance of Ruby's object m
       }
       print(foo(\x { x * x })); # => 81
 
+* **Method binding syntax**
+
+      print([1, 2, 3, 4].map(2:*)); # => [2, 4, 6, 8]
+
 * **Everything is an expression**
 
       obj = class X {
