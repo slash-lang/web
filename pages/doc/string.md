@@ -177,3 +177,33 @@ At the moment, only the `%s` format specifier is supported.
     
     "%s + %s = %s".format(1, 2, 3);
       # => "1 + 2 = 3"
+
+## #replace(search, replace)
+
+Replaces all occurrences of `search` in the receiver with `replace`. `search` may be either a [`String`](/index.sl/doc/string) or a [`Regexp`](/index.sl/doc/regexp). If `search` is a `Regexp`, `replace` may be a *callable* (an object that responds to `#call`) - if so, it will be called for each match of `search` with a [`Regexp::Match`](/index.sl/doc/regexp/match) object as an argument.
+
+    "hello world".replace("hello", "goodbye");
+      # => "goodbye world"
+    
+    "this text is _emphasized_.".replace(%r{_(.*?)_}, \x { "<em>" + x[1] + "</em>" });
+      # => "this text is <em>emphasized</em>."
+
+## #lower
+
+Converts all uppercase characters in the receiver to lowercase. If the receiver is a valid UTF-8 string, Slash will convert non-Latin uppercase characters to their lowercase equivalents. Otherwise, only the letters from `A` to `Z` will be converted.
+
+    "NO NEED TO SHOUT".lower;
+      # => "no need to shout"
+      
+    "ÅÉÎØÜ".lower;
+      # => "åéîøü"
+
+## #upper
+
+Converts all lowercase characters in the receiver to uppercase. If the receiver is a valid UTF-8 string, Slash will convert non-Latin lowercase characters to their uppercase equivalents. Otherwise, only the letters from `a` to `z` will be converted.
+
+    "Hello World".upper;
+      # => "HELLO WORLD"
+    
+    "åéîøü".upper;
+      # => "ÅÉÎØÜ"
