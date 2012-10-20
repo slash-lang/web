@@ -1,5 +1,11 @@
 <%
 
+def class_name_to_underscores(name) {
+    name.split("::").map(\part {
+        part.replace(%r{(?<=[a-z])([A-Z])}, \match { "_" + match }).lower
+    }).join("/");
+}
+
 page = "/home";
 
 if Request.path_info != "" {
@@ -14,6 +20,8 @@ if Request.path_info != "" {
 markdown_source = File.read("pages" + page + ".md");
 title = %r{# (.*)\n}.match(markdown_source)[1];
 html = Markdown.compile(markdown_source);
+
+documented_classes = [Comparable, Error, Error::Frame, Object, String];
 
 %>
 <!DOCTYPE html>
@@ -33,11 +41,9 @@ html = Markdown.compile(markdown_source);
         </ul>
         <h2>Documentation</h2>
         <ul>
-            <li><a href="/index.sl/doc/comparable">Comparable</a></li>
-            <li><a href="/index.sl/doc/error">Error</a></li>
-            <li><a href="/index.sl/doc/error/frame">Error::Frame</a></li>
-            <li><a href="/index.sl/doc/object">Object</a></li>
-            <li><a href="/index.sl/doc/string">String</a></li>
+            <% for klass in documented_classes { %>
+                <li><a href="/index.sl/doc/<%= class_name_to_underscores(klass.to_s) %>"><%= klass.to_s %></a></li>
+            <% } %>
         </ul>
     </nav>
     <section>
