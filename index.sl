@@ -1,9 +1,28 @@
 <%
 
+require("highlighter");
+
 def class_name_to_underscores(name) {
     name.split("::").map(\part {
         part.replace(%r{(?<=[a-z])([A-Z])}, \match { "_" + match[0] }).lower
     }).join("/");
+}
+
+def unescape_html(html) {
+    html.replace("&lt;", "<").replace("&gt;", ">").replace("&quot;", "\"");
+}
+
+def highlight_code_segments(markdown) {
+    markdown.replace(%r{<pre><code>((.|\n)*?)</code></pre>}, \md {
+        # hacky unescaping lol:
+        if md[1].index("&lt;%") {
+            "<pre><code>" + md[1].replace(%r{&lt;%((.|\n)*?)%&gt;}, \md {
+                "&lt;%" + Highlighter.new(unescape_html(md[1])).to_html + "%&gt;"
+            }) + "</pre></code>";
+        } else {
+            "<pre><code>" + Highlighter.new(unescape_html(md[1])).to_html + "</code></pre>";
+        }
+    });
 }
 
 page = "/home";
@@ -19,7 +38,7 @@ if Request.path_info != "" {
 
 markdown_source = File.read("pages" + page + ".md");
 title = %r{# (.*)\n}.match(markdown_source)[1];
-html = Markdown.compile(markdown_source);
+html = highlight_code_segments(Markdown.compile(markdown_source));
 
 documented_classes = [Comparable, Error, Error::Frame, Object, String, Method, BoundMethod, Class];
 
