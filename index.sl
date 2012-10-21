@@ -21,7 +21,7 @@ markdown_source = File.read("pages" + page + ".md");
 title = %r{# (.*)\n}.match(markdown_source)[1];
 html = Markdown.compile(markdown_source);
 
-documented_classes = [Comparable, Error, Error::Frame, Object, String, Method, BoundMethod];
+documented_classes = [Comparable, Error, Error::Frame, Object, String, Method, BoundMethod, Class];
 
 %>
 <!DOCTYPE html>
