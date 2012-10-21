@@ -30,7 +30,7 @@ Dynamically calls the `method` method on the receiver with `args` as the argumen
 
 ## #reponds_to(method)
 
-Determines whether the receiver will respond to `method`. Returns `true` if `method` can be sent to the receiver without throwing a [`NoMethodError`](/index.sl/doc/no_method_error).
+Determines whether the receiver will respond to `method`. Returns `true` if `method` can be sent to the receiver without throwing a [`NoMethodError`](/index.sl/doc/error).
 
     1.responds_to("+");
       # => true
