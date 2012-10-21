@@ -2,7 +2,7 @@
 
 def class_name_to_underscores(name) {
     name.split("::").map(\part {
-        part.replace(%r{(?<=[a-z])([A-Z])}, \match { "_" + match }).lower
+        part.replace(%r{(?<=[a-z])([A-Z])}, \match { "_" + match[0] }).lower
     }).join("/");
 }
 
@@ -21,7 +21,7 @@ markdown_source = File.read("pages" + page + ".md");
 title = %r{# (.*)\n}.match(markdown_source)[1];
 html = Markdown.compile(markdown_source);
 
-documented_classes = [Comparable, Error, Error::Frame, Object, String];
+documented_classes = [Comparable, Error, Error::Frame, Object, String, Method, BoundMethod];
 
 %>
 <!DOCTYPE html>
@@ -41,7 +41,7 @@ documented_classes = [Comparable, Error, Error::Frame, Object, String];
         </ul>
         <h2>Documentation</h2>
         <ul>
-            <% for klass in documented_classes { %>
+            <% for klass in documented_classes.sort(\(a, b) { a.to_s <=> b.to_s }) { %>
                 <li><a href="/index.sl/doc/<%= class_name_to_underscores(klass.to_s) %>"><%= klass.to_s %></a></li>
             <% } %>
         </ul>
