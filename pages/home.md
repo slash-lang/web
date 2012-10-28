@@ -57,7 +57,10 @@ Slash combines PHP's simple execution model with the elegance of Ruby's object m
       def foo(callable) {
           callable.call(9);
       }
-      print(foo(\x { x * x })); # => 81
+      
+      print(foo(\x { x * x }), "\n"); # => 81
+      
+      print(foo(λ x . x ** x), "\n"); # => 387420489
 
 * **Method binding syntax**
 
