@@ -121,3 +121,16 @@ Determines if two objects are considered unequal. The default implementation cal
     def o.==(other) { true; }
     o != "x";
       # => false
+
+## #eval(code, filename = `"(eval)"`)
+
+Evaluates a string of Slash code given by `code`. A filename can be optionally passed which will appear in the backtraces of any exceptions thrown from the evaluated code.
+
+    eval("1 + 2");
+      # => 3
+    
+    eval("throw Error.new;", "some-evaluated-code");
+      # !! Error
+             at <main> in some-evaluated-code, line 1
+             at eval in foo.sl, line 1
+             at <main> in foo.sl, line 1
