@@ -26,6 +26,10 @@ def highlight_code_segments(markdown) {
 }
 
 page = "/home";
+# get the base path for the website:
+root = Request.env['SCRIPT_NAME].split("/");
+root.pop();
+root = root.join("/");
 
 if Request.path_info != "" {
     if %r{^(/[a-z_]+)+/?$}.match(Request.path_info) {
@@ -47,7 +51,7 @@ documented_classes = [Comparable, Error, Error::Frame, Object, String, Method, B
 <html>
 <head>
     <title><%= title %></title>
-    <link href="/style.css" rel="stylesheet" />
+    <link href="<%= root %>/style.css" rel="stylesheet" />
     <style>
         <%#= Pygments.css %>
     </style>
@@ -56,12 +60,12 @@ documented_classes = [Comparable, Error, Error::Frame, Object, String, Method, B
     <nav>
         <h2>Slash</h2>
         <ul>
-            <li><a href="/">Home</a></li>
+            <li><a href="<%= root %>">Home</a></li>
         </ul>
         <h2>Documentation</h2>
         <ul>
             <% for klass in documented_classes.sort(\(a, b) { a.to_s <=> b.to_s }) { %>
-                <li><a href="/index.sl/doc/<%= class_name_to_underscores(klass.to_s) %>"><%= klass.to_s %></a></li>
+                <li><a href="<%= root %>/doc/<%= class_name_to_underscores(klass.to_s) %>"><%= klass.to_s %></a></li>
             <% } %>
         </ul>
     </nav>
