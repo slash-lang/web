@@ -54,6 +54,9 @@ documented_classes = [Comparable, Error, Error::Frame, Object, String, Method, B
 </head>
 <body>
     <nav>
+        <div id="logo">
+            <img src="/logo.png" id="logo">
+        </div>
         <h2>Slash</h2>
         <ul>
             <li><a href="/">Home</a></li>
