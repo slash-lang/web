@@ -6,6 +6,10 @@ PHP is a great tool that is virtually unmatched in its domain - ie. 'slap a scri
 
 Slash combines PHP's simple execution model with the elegance of Ruby's object model. The result is a language that lets you achieve results quickly while being a joy to use.
 
+## Source code
+
+The Slash project is available on GitHub: https://github.com/slash-lang/slash
+
 ## Overview
 
     <%
