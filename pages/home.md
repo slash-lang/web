@@ -8,7 +8,7 @@ Slash combines PHP's simple execution model with the elegance of Ruby's object m
 
 ## Source code
 
-The Slash project is available on GitHub: https://github.com/slash-lang/slash
+The Slash project is available on GitHub: [https://github.com/slash-lang/slash](https://github.com/slash-lang/slash)
 
 ## Overview
 
