@@ -51,7 +51,7 @@ The Slash project is available on GitHub: [https://github.com/slash-lang/slash](
 * **Destructuring assignment**
 
       def what {
-          "switcheroo old the".split;
+          "switcheroo old the".split(" ");
       }
       [c, b, a] = what();
       print(a, b, c); # => the old switcheroo
