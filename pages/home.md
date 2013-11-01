@@ -175,7 +175,7 @@ The Slash project is available on GitHub: [https://github.com/slash-lang/slash](
           foo();
       } catch e {
           for frame in e.backtrace {
-              print(e.method, " ", e.file, ":", e.line, "\n");
+              print(frame.method, " ", frame.file, ":", frame.line, "\n");
           }
       }
       
