@@ -16,6 +16,9 @@ nav {
   padding: 0px 24px;
   background-color: #c8dff7;
   border-right: 1px solid #85b8ee; }
+  nav #logo {
+    margin-top: 12px;
+    text-align: center; } 
   nav h2 {
     margin-top: 24px;
     font-size: 16px;
