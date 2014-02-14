@@ -1,6 +1,11 @@
 <%
 
-require("highlighter");
+try {
+    require("highlighter");
+    has_highlighter = true;
+} catch e {
+    has_highlighter = false;
+}
 
 def class_name_to_underscores(name) {
     name.split("::").map(\part {
@@ -13,6 +18,7 @@ def unescape_html(html) {
 }
 
 def highlight_code_segments(markdown) {
+    return markdown unless has_highlighter;
     markdown.replace(%r{<pre><code>((.|\n)*?)</code></pre>}, \md {
         # hacky unescaping lol:
         if md[1].index("&lt;%") {
