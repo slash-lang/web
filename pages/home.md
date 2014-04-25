@@ -18,7 +18,7 @@ The Slash project is available on GitHub: [https://github.com/slash-lang/slash](
     %>
     <h1>People</h1>
     <ul>
-        <% for person in db.query("SELECT * FROM people") { %>
+        <% for person in db.query("SELECT * FROM people WHERE location = ?", "Melbourne") { %>
             <li><%= person["name"] %></li>
         <% } else { %>
             <li><em>No people found!</em></li>
